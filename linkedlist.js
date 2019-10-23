@@ -220,7 +220,11 @@ const listSize = (list) => {
     console.log(count)
 }
 
+const isEmpty = (list) => {
+    return !list.head ? true : false
+}
+
 main()
 display(SLL)
 listSize(SLL)
-
+console.log(isEmpty(SLL))
