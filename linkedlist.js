@@ -163,18 +163,6 @@ class LinkedList {
         this.size++
     }
 
-    printList() {
-        if (!this.head) {
-            return null;
-        }
-
-        let current = this.head
-
-        while (current) {
-            console.log(current.data)
-            current = current.next
-        }
-    }
 }
 
 // const myLinkedList = new LinkedList();
@@ -187,9 +175,9 @@ class LinkedList {
 // myLinkedList.remove(70);
 // myLinkedList.remove(20);
 
-const main = () => {
-    const SLL = new LinkedList()
+const SLL = new LinkedList()
 
+const main = () => {
     SLL.insertLast('Apollo')
     SLL.insertLast('Boomer')
     SLL.insertLast('Helo')
@@ -200,8 +188,22 @@ const main = () => {
     SLL.insertBefore('Athena', 'Apollo')
     SLL.insertAfter('Hotdog', 'Helo')
     SLL.insertAt('Kat', 3)
+    SLL.remove('Tauhida')
+}
 
-    SLL.printList()
+const display = (list) => {
+    if (!list.head) {
+        return null;
+    }
+
+    let current = list.head
+
+    while (current) {
+        console.log(current.data)
+        current = current.next
+    }
 }
 
 main()
+display(SLL)
+
