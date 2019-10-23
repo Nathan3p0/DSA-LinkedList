@@ -204,6 +204,23 @@ const display = (list) => {
     }
 }
 
+const listSize = (list) => {
+    if (!list.head) {
+        return;
+    }
+
+    let current = list.head
+    let count = 0
+
+    while (current) {
+        count++
+        current = current.next
+    }
+
+    console.log(count)
+}
+
 main()
 display(SLL)
+listSize(SLL)
 
