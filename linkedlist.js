@@ -48,11 +48,32 @@ class LinkedList {
             current = current.next;
         }
         if (current === null) {
-            console.log('Data not Found');
+            console.log('Data not Found to Remove');
             return;
         }
         previous.next = current.next;
         this.size--;
+    }
+    find(data) {
+        if (!this.head) {
+            console.log('There is nothing in this list. Get your -ish together. Thank you :)')
+            return;
+        }
+        if (this.head.data === data) {
+            console.log(this.head)
+            return this.head;
+        }
+
+        let current = this.head;
+        while (current && current.data !== data) {
+            current = current.next;
+        }
+        if (current === null) {
+            console.log('Data not Found');
+            return;
+        }
+        console.log(current);
+        return current;
     }
 }
 
@@ -62,6 +83,7 @@ myLinkedList.insertLast(50);
 myLinkedList.remove(50);
 myLinkedList.insertFirst(30);
 myLinkedList.insertLast(70);
+myLinkedList.find(10);
 myLinkedList.remove(70);
 myLinkedList.remove(20);
 
