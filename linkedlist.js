@@ -83,18 +83,52 @@ class LinkedList {
         }
         if (this.head.data === key) {
             this.insertFirst(data)
+            return
         }
 
         let current, previous
         const newNode = new Node(data)
         current = this.head
-        while (current.data !== key) {
+        while (current && current.data !== key) {
             previous = current
             current = current.next
         }
 
+        if (current === null) {
+            console.log('You suck. This doesn\'t exist')
+            return
+        }
+
         previous.next = newNode
         newNode.next = current
+        this.size++
+    }
+
+    insertAfter(data, key) {
+        if (!this.head) {
+            console.log('There is nothing in this list. Get your -ish together. Thank you :)')
+            return;
+        }
+        if (this.head.data === key) {
+            this.insertFirst(data)
+            return
+        }
+        let current
+
+        const newNode = new Node(data)
+
+        current = this.head
+        while (current && current.data !== key) {
+            current = current.next
+        }
+
+        if (current === null) {
+            console.log('You suck. This doesn\'t exist')
+            return
+        }
+
+        newNode.next = current.next
+        current.next = newNode
         this.size++
     }
 
@@ -132,7 +166,8 @@ const main = () => {
     SLL.insertLast('Starbuck')
     SLL.insertLast('Tauhida')
     SLL.remove('Husker')
-    SLL.insertBefore('Athena', 'Tauhida')
+    SLL.insertBefore('Athena', 'Apollo')
+    SLL.insertAfter('Hotdog', 'Helo')
 
     SLL.printList()
 }
