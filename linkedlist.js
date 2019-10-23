@@ -75,16 +75,66 @@ class LinkedList {
         console.log(current);
         return current;
     }
+
+    insertBefore(data, key) {
+        if (!this.head) {
+            console.log('There is nothing in this list. Get your -ish together. Thank you :)')
+            return;
+        }
+        if (this.head.data === key) {
+            this.insertFirst(data)
+        }
+
+        let current, previous
+        const newNode = new Node(data)
+        current = this.head
+        while (current.data !== key) {
+            previous = current
+            current = current.next
+        }
+
+        previous.next = newNode
+        newNode.next = current
+        this.size++
+    }
+
+    printList() {
+        if (!this.head) {
+            return null;
+        }
+
+        let current = this.head
+
+        while (current) {
+            console.log(current.data)
+            current = current.next
+        }
+    }
 }
 
-const myLinkedList = new LinkedList();
-myLinkedList.remove(50);
-myLinkedList.insertLast(50);
-myLinkedList.remove(50);
-myLinkedList.insertFirst(30);
-myLinkedList.insertLast(70);
-myLinkedList.find(10);
-myLinkedList.remove(70);
-myLinkedList.remove(20);
+// const myLinkedList = new LinkedList();
+// myLinkedList.remove(50);
+// myLinkedList.insertLast(50);
+// myLinkedList.remove(50);
+// myLinkedList.insertFirst(30);
+// myLinkedList.insertLast(70);
+// myLinkedList.find(10);
+// myLinkedList.remove(70);
+// myLinkedList.remove(20);
 
-console.log(myLinkedList)
+const main = () => {
+    const SLL = new LinkedList()
+
+    SLL.insertLast('Apollo')
+    SLL.insertLast('Boomer')
+    SLL.insertLast('Helo')
+    SLL.insertLast('Husker')
+    SLL.insertLast('Starbuck')
+    SLL.insertLast('Tauhida')
+    SLL.remove('Husker')
+    SLL.insertBefore('Athena', 'Tauhida')
+
+    SLL.printList()
+}
+
+main()
