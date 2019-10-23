@@ -132,6 +132,37 @@ class LinkedList {
         this.size++
     }
 
+    insertAt(data, idx) {
+        if (!this.head) {
+            console.log('There is nothing in this list. Get your -ish together. Thank you :)')
+            return;
+        }
+        if (idx > 0 && idx > this.size) {
+            console.log('idx given is out of range')
+            return
+        }
+
+        if (idx === 0) {
+            this.insertFirst(data)
+            return
+        }
+
+        let current, previous
+        const newNode = new Node(data)
+        current = this.head
+        let count = 0
+
+        while (count < idx) {
+            previous = current
+            current = current.next
+            count++
+        }
+
+        previous.next = newNode
+        newNode.next = current
+        this.size++
+    }
+
     printList() {
         if (!this.head) {
             return null;
@@ -168,6 +199,7 @@ const main = () => {
     SLL.remove('Husker')
     SLL.insertBefore('Athena', 'Apollo')
     SLL.insertAfter('Hotdog', 'Helo')
+    SLL.insertAt('Kat', 3)
 
     SLL.printList()
 }
